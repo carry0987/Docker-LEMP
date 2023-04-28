@@ -40,6 +40,7 @@ services:
       interval: 5s
       retries: 10
 
+  # Redis Service
   redis:
     image: redis:latest
     # container_name: redis
@@ -47,6 +48,8 @@ services:
       - 6379:6379
     volumes:
       - redis-data:/data
+    depends_on:
+      - php
 
   # PhpMyAdmin Service
   phpmyadmin:
