@@ -4,6 +4,8 @@ RUN printf "\n" | pecl install imagick
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg --with-webp
 RUN docker-php-ext-install pdo_mysql bcmath mysqli gd
 RUN docker-php-ext-enable imagick
+
+# Install Redis extension
 RUN printf "\n" | pecl install redis
 RUN docker-php-ext-enable redis
 

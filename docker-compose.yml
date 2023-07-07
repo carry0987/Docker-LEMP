@@ -27,29 +27,28 @@ services:
   mariadb:
     build: ./.docker/mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: test1234
-      MYSQL_USER: test_user
-      MYSQL_PASSWORD: test1234
-      MYSQL_ROOT_HOST: "%"
-      MYSQL_DATABASE: demo
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./.docker/mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
       - mysqldata:/var/lib/mysql
+      - ./.docker/mariadb/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
     healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 -u test_user --password=$$MYSQL_ROOT_PASSWORD
+      test: mariadb-admin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
       interval: 5s
       retries: 10
 
   # Redis Service
   redis:
     image: redis:latest
-    # container_name: redis
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes: 
+      - redisdata:/data
     ports:
       - 6379:6379
-    volumes:
-      - redis-data:/data
-    depends_on:
-      - php
 
   # PhpMyAdmin Service
   phpmyadmin:
@@ -65,4 +64,4 @@ services:
 # Volumes
 volumes:
   mysqldata:
-  redis-data:
+  redisdata:

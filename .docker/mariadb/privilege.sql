@@ -1,3 +1,0 @@
--- CREATE USER 'test_user'@'%' IDENTIFIED BY 'test1234';
-GRANT ALL PRIVILEGES ON *.* TO 'test_user'@'%' IDENTIFIED BY 'test1234';
-FLUSH PRIVILEGES;
