@@ -5,7 +5,7 @@ services:
   # Nginx Service
   nginx:
     image: nginx:1.21
-    ports:
+    ports: # If you are running this LEMP under a reverse proxy, you can remove the port mapping
       - 80:80
     volumes:
       - ./src:/var/www/php
@@ -54,7 +54,7 @@ services:
   # PhpMyAdmin Service
   phpmyadmin:
     image: arm64v8/phpmyadmin:5.2.1
-    ports:
+    ports: # If you are running this LEMP under a reverse proxy, you can remove the port mapping
       - 8080:80
     environment:
       PMA_HOST: mariadb
