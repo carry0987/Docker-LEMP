@@ -15,7 +15,7 @@ services:
 
   # PHP Service
   php:
-    build: ./.docker/php
+    image: carry0987/php:latest
     working_dir: /var/www/php
     volumes:
       - ./src:/var/www/php
