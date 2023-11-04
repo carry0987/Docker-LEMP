@@ -46,6 +46,8 @@ services:
   redis:
     build:
       context: ./.docker/redis
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
     command: sh -c './init.sh'
     privileged: true
     volumes:

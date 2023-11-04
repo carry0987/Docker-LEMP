@@ -13,6 +13,4 @@
 sysctl vm.overcommit_memory=1
 
 # Start redis server
-redis-server /usr/local/etc/redis/redis.conf --loglevel warning --bind 0.0.0.0
-
-redis-server --requirepass "${REDIS_PASSWORD}"
+redis-server --requirepass "${REDIS_PASSWORD}" /usr/local/etc/redis/redis.conf --loglevel warning --bind 0.0.0.0
