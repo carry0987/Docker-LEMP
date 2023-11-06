@@ -4,7 +4,7 @@ version: '3.8'
 services:
   # Nginx Service
   nginx:
-    image: nginx:1.21
+    image: nginx:1.25.3
     ports:
       - 80:80
     volumes:
