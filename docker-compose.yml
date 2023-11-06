@@ -10,6 +10,7 @@ services:
     volumes:
       - ./src:/var/www/php
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d
+      - phpmyadmin_data:/var/www/html/:ro
     depends_on:
       - php
 
@@ -57,11 +58,11 @@ services:
 
   # PhpMyAdmin Service
   phpmyadmin:
-    image: arm64v8/phpmyadmin:5.2.1
-    ports:
-      - 8080:80
+    image: arm64v8/phpmyadmin:fpm-alpine
     environment:
       PMA_HOST: mariadb
+    volumes:
+      - phpmyadmin_data:/var/www/html/
     depends_on:
       mariadb:
         condition: service_healthy
@@ -70,3 +71,4 @@ services:
 volumes:
   mysqldata:
   redisdata:
+  phpmyadmin_data:
