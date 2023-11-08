@@ -1,3 +1,6 @@
 
 .DS_Store
 src/*
+.docker/nginx/conf.d/*
+!.docker/nginx/conf.d/php.conf
+!.docker/nginx/conf.d/pma.conf
