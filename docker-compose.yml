@@ -24,6 +24,7 @@ services:
     working_dir: /var/www/php
     volumes:
       - ./src:/var/www/php
+      - ./.docker/php/conf/php.ini:/usr/local/etc/php/conf.d/php.user.ini
       - ./.docker/php/conf/my-php.conf:/usr/local/etc/php-fpm.d/z-www-overrides.conf
     depends_on:
       mariadb:
