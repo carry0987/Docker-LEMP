@@ -1,5 +1,5 @@
 # Docker-LEMP
-A LEMP fullstack with latest release of 8.1.2 and Composer, MariaDB, Mroonga, Nginx, PHPMyAdmin, Redis
+A LEMP fullstack with latest release of 8.2.13 and Composer, MariaDB, Mroonga, Nginx, PHPMyAdmin, Redis
 
 ## Usage
 1. Clone this repository
