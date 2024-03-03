@@ -68,7 +68,7 @@ services:
 
   # PhpMyAdmin Service
   phpmyadmin:
-    image: arm64v8/phpmyadmin:fpm-alpine
+    image: phpmyadmin:fpm-alpine
     environment:
       PMA_HOST: mariadb
       MAX_EXECUTION_TIME: ${PMA_MAX_EXECUTION_TIME}
